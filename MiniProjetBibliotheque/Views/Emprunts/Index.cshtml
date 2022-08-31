@@ -66,7 +66,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Livre.Titre)
                     </td>
-                    <td>
+                    <td class="d-flex justify-content-center">
                         <a asp-action="Details" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-info-circle"></i> Détails</button></a>
                         @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {

@@ -56,11 +56,11 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-info-circle"></i> Détails</button></a>
+                    <a asp-action="Details" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-info-circle"></i> Détails</button></a>
                     @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-pen"></i> Éditer</button></a>
-                        <a asp-action="Delete" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i> Supprimer</button></a>
+                        <a asp-action="Edit" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-pen"></i> Éditer</button></a>
+                        <a asp-action="Delete" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-danger me-1"><i class="bi bi-x-circle"></i> Supprimer</button></a>
                     }
                 </td>
             </tr>

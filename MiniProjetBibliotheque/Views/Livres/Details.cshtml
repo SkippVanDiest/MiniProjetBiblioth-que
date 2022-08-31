@@ -1,5 +1,8 @@
 ﻿@model MiniProjetBibliotheque.Models.Livre
 
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -26,7 +29,7 @@
             @Html.DisplayNameFor(model => model.Auteur)
         </dt>
         <dd class="col-sm-10">
-            <a asp-controller="Auteurs" asp-action="Details" asp-route-id="@Model?.AuteurId">@Html.DisplayFor(model => model.Auteur.NomAuteur)</a>
+            <a asp-controller="Auteurs" asp-action="Details" asp-route-id="@Model?.AuteurId">@Html.DisplayFor(model => model.Auteur.PrenomAuteur) @Html.DisplayFor(model => model.Auteur.NomAuteur)</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Domaine)
@@ -48,6 +51,9 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-outline-dark" cla asp-action="Edit" asp-route-id="@Model?.LivreId">Éditer</a> |
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <a class="btn btn-outline-dark me-1" asp-action="Edit" asp-route-id="@Model?.LivreId">Éditer</a>
+}
     <a asp-action="Index">Retour à la liste</a>
 </div>

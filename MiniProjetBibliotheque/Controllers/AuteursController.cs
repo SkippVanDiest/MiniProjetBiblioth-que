@@ -96,7 +96,7 @@ namespace MiniProjetBibliotheque.Controllers
         [Authorize(Roles = "Admin")]
         /* Method for displaying the Message Box */
 
-        public async Task<IActionResult> Create([Bind("AuteurId,NomAuteur,PrenomAuteur")] Auteur auteur)
+        public async Task<IActionResult> Create([Bind("AuteurId,NomAuteur,PrenomAuteur,EmailAuteur,TelephoneAuteur,Grade")] Auteur auteur)
         {
             if (!ModelState.IsValid)
             {

@@ -83,7 +83,7 @@ namespace MiniProjetBibliotheque.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            ViewData["AuteurId"] = new SelectList(_context.Auteurs, "AuteurId", "NomAuteur");
+            ViewData["AuteurId"] = new SelectList(_context.Auteurs, "AuteurId", "NomAuteur", "PrenomAuteur");
             ViewData["DomaineId"] = new SelectList(_context.Domaines, "DomaineId", "NomDomaine");
             return View();
         }

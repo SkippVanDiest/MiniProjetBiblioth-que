@@ -1,5 +1,8 @@
 ﻿@model MiniProjetBibliotheque.Models.Domaine
 
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -36,6 +39,9 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@Model?.DomaineId">Éditer</a> |
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <a class="btn btn-outline-dark me-1" asp-action="Edit" asp-route-id="@Model?.DomaineId">Éditer</a>
+}
     <a asp-action="Index">Retour à la liste</a>
 </div>

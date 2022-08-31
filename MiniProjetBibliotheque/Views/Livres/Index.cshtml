@@ -38,10 +38,10 @@
     <thead>
         <tr>
             <th>
-                @*<a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Titre</a>*@
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Titre</a>
                 @*<a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Titre)</a>*@
 
-                @Html.ActionLink("Titre", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @*Html.ActionLink("Titre", "Index", new { sortOrder = ViewBag.NameSortParm })*@
         </th>
             </th>
             <th>

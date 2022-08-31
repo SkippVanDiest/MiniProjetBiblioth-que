@@ -27,14 +27,14 @@ namespace MiniProjetBibliotheque.Controllers
         //    var dbContextBibliotheque = _context.Livres.Include(l => l.Auteur).Include(l => l.Domaine);
         //    return View(await dbContextBibliotheque.ToListAsync());
         //}
-        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
             if (searchString != null)
             {
-                page = 1;
+                pageNumber = 1;
             }
             else
             {
@@ -48,8 +48,7 @@ namespace MiniProjetBibliotheque.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                livres = livres.Where(s => s.Titre.Contains(searchString)
-                                       );
+                livres = livres.Where(s => s.Titre.Contains(searchString));
             }
 
 
@@ -67,7 +66,7 @@ namespace MiniProjetBibliotheque.Controllers
 
             int pageSize = 3;
 
-            return View(await PaginatedList<Livre>.CreateAsync(livres.AsNoTracking(), page ?? 1, pageSize));
+            return View(await PaginatedList<Livre>.CreateAsync(livres.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Livres/Details/5

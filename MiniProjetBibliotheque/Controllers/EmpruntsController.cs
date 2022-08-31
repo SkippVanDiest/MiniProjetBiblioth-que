@@ -68,7 +68,7 @@ namespace MiniProjetBibliotheque.Controllers
         [Authorize]
         public IActionResult Create()
         {
-            ViewData["Id"] = new SelectList(_context.Lecteurs, "Id", "NomLecteur");
+            //ViewData["Id"] = new SelectList(_context.Users, "Id", "NomLecteur");
             ViewData["LivreId"] = new SelectList(_context.Livres, "LivreId", "Titre");
             return View();
         }
@@ -99,7 +99,7 @@ namespace MiniProjetBibliotheque.Controllers
                 }
                 
             }
-            ViewData["Id"] = new SelectList(_context.Lecteurs, "Id", "NomLecteur", emprunt.Id);
+            //ViewData["Id"] = new SelectList(_context.Lecteurs, "Id", "NomLecteur", emprunt.Id);
             ViewData["LivreId"] = new SelectList(_context.Livres, "LivreId", "Titre", emprunt.LivreId);
             return View(emprunt);
         }
@@ -118,7 +118,7 @@ namespace MiniProjetBibliotheque.Controllers
             {
                 return NotFound();
             }
-            ViewData["Id"] = new SelectList(_context.Lecteurs, "Id", "NomLecteur", emprunt.Id);
+            //ViewData["Id"] = new SelectList(_context.Lecteurs, "Id", "NomLecteur", emprunt.Id);
             ViewData["LivreId"] = new SelectList(_context.Livres, "LivreId", "Titre", emprunt.LivreId);
             return View(emprunt);
         }
@@ -157,7 +157,7 @@ namespace MiniProjetBibliotheque.Controllers
                 TempData["AlertMessage"] = "Emprunt modifiée avec succès";
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Id"] = new SelectList(_context.Lecteurs, "Id", "NomLecteur", emprunt.Id);
+            //ViewData["Id"] = new SelectList(_context.Lecteurs, "Id", "NomLecteur", emprunt.Id);
             ViewData["LivreId"] = new SelectList(_context.Livres, "LivreId", "Titre", emprunt.LivreId);
             return View(emprunt);
         }

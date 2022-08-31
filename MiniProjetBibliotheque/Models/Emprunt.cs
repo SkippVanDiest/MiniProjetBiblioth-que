@@ -6,7 +6,7 @@ namespace MiniProjetBibliotheque.Models
     {
         [Key]
         public int EmpruntId { get; set; }
-        public int Id { get; set; } // LecteurId
+        public string Id { get; set; } // LecteurId
         public int LivreId { get; set; }
         public DateTime DateEmprunt { get; set; }
         public DateTime DateRetour { get; set; }

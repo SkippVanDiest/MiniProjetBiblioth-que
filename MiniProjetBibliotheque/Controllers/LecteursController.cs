@@ -33,17 +33,16 @@ namespace MiniProjetBibliotheque.Controllers
 
             ViewData["CurrentFilter"] = searchString;
 
-            var lecteurs = from a in _context.Lecteurs
+            var lecteurs = from a in _context.Users
                           select a;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                lecteurs = lecteurs.Where(s => s.NomLecteur.Contains(searchString)
-                                       || s.PrenomLecteur.Contains(searchString));
+                lecteurs = lecteurs.Where(s => s.UserName.Contains(searchString));
             }
 
 
-            switch (sortOrder)
+            /*switch (sortOrder)
             {
                 case "name_desc":
                     lecteurs = lecteurs.OrderBy(s => s.NomLecteur);
@@ -53,7 +52,7 @@ namespace MiniProjetBibliotheque.Controllers
                 default:
                     lecteurs = lecteurs.OrderBy(s => s.PrenomLecteur);
                     break;
-            }
+            }*/
             return View(await lecteurs.ToListAsync());
         }
 

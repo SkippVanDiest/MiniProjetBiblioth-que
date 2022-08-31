@@ -1,4 +1,7 @@
-﻿@model IEnumerable<MiniProjetBibliotheque.Models.Lecteur>
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 
 @{
     ViewData["Title"] = "Index";
@@ -16,9 +19,12 @@
     </div>
 </form>
 
-<p>
-    <a class="btn btn-dark" asp-action="Create">Créer un nouveau lecteur</a>
-</p>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <p>
+        <a class="btn btn-dark" asp-action="Create">Créer un nouveau lecteur</a>
+    </p>
+}
 
 @if (TempData["AlertMessage"] != null)
 {
@@ -30,7 +36,7 @@
 <table class="table border-dark">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Nom</a>
             </th>
             <th>
@@ -41,12 +47,9 @@
             </th>
             <th>
                 Téléphone
-            </th>
+            </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.Adresse)
-            </th>
-            <th>
-                Mot de passe
+                @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th></th>
         </tr>
@@ -55,7 +58,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.NomLecteur)
                 </td>
                 <td>
@@ -66,14 +69,17 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Adresse)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-dark"><i class="bi bi-pen"></i> Éditer</button></a> |
-                    <a asp-action="Details" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-dark"><i class="bi bi-info-circle"></i> Détails</button></a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i> Supprimer</button></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-info-circle"></i> Détails</button></a>
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-pen"></i> Éditer</button></a>
+                        <a asp-action="Delete" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-danger me-1"><i class="bi bi-x-circle"></i> Supprimer</button></a>
+                    }
                 </td>
             </tr>
         }

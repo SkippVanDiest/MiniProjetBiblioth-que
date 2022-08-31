@@ -37,7 +37,8 @@ namespace MiniProjetBibliotheque.Controllers
         public async Task<IActionResult> Create(IdentityRole role)
         {
             await _roleManager.CreateAsync(role);
-            return View();
+            TempData["AlertMessage"] = "Role crée avec succès";
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Read()

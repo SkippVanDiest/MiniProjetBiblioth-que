@@ -4,8 +4,15 @@
 	ViewData["Title"] = "Index";
 }
 
-<h1>Liste des rôles</h1>
-<a asp-action="Create">Créer</a>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong> Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<h1 class="display-4">Liste des rôles</h1>
+<a class="btn btn-dark mb-3" asp-action="Create">Créer</a>
 <table class="table table-stripped table-bordered">
 	<thead>
 		<tr>

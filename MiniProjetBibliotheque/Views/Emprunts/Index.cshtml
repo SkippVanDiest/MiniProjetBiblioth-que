@@ -30,7 +30,7 @@
     </div>
 }
 
-<table class="table border-dark">
+<table class="table table-stripped table-bordered">
     <thead>
         <tr>
             <th>
@@ -51,28 +51,51 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateEmprunt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateRetour)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Livre.Titre)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-info-circle"></i> Détails</button></a>
-                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-pen"></i> Éditer</button></a>
-                        <a asp-action="Delete" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-danger me-1"><i class="bi bi-x-circle"></i> Supprimer</button></a>
-                    }
+            @if (User.IsInRole("Admin"))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEmprunt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateRetour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Livre.Titre)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-info-circle"></i> Détails</button></a>
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-pen"></i> Éditer</button></a>
+                            <a asp-action="Delete" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-danger me-1"><i class="bi bi-x-circle"></i> Supprimer</button></a>
+                        }
                 </td>
             </tr>
+            }
+            else if (item.Id == User.Identity?.Name)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEmprunt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateRetour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Livre.Titre)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-info-circle"></i> Détails</button></a>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

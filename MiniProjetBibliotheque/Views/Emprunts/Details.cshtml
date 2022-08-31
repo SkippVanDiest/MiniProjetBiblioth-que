@@ -1,0 +1,42 @@
+﻿@model MiniProjetBibliotheque.Models.Emprunt
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="display-4">Détails emprunt</h1>
+
+<div>
+    <h4>Emprunt</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Date d'emprunt'
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateEmprunt)
+        </dd>
+        <dt class="col-sm-2">
+            Date de retour
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateRetour)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Lecteur)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-controller="Lecteurs" asp-action="Details" asp-route-id="@Model?.Id">@Html.DisplayFor(model => model.Lecteur.NomLecteur)</a>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Livre)
+        </dt>
+        <dd class="col-sm-10">
+            <a asp-controller="Livres" asp-action="Details" asp-route-id="@Model?.LivreId">@Html.DisplayFor(model => model.Livre.Titre)</a>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-dark" asp-action="Edit" asp-route-id="@Model?.EmpruntId">Éditer</a> |
+    <a asp-action="Index">Retour à la liste</a>
+</div>

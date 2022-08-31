@@ -1,0 +1,51 @@
+﻿@model MiniProjetBibliotheque.Models.Auteur
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="display-4">Supprimer un auteur</h1>
+
+<h3>Êtes-vous sûr de vouloir supprimer cet auteur ?</h3>
+<div>
+    <h4>Auteur</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nom
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            Prénom
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PrenomAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmailAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            Téléphone
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TelephoneAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AuteurId" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+        <a asp-action="Index">Retour à la liste</a>
+    </form>
+</div>

@@ -1,0 +1,56 @@
+﻿@model MiniProjetBibliotheque.Models.Lecteur
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-4">Modifier un lecteur</h1>
+
+<h4>Lecteur</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group mb-3">
+                <label class="control-label">Nom</label>
+                <input asp-for="NomLecteur" class="form-control" />
+                <span asp-validation-for="NomLecteur" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Prénom</label>
+                <input asp-for="PrenomLecteur" class="form-control" />
+                <span asp-validation-for="PrenomLecteur" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Téléphone</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Adresse" class="control-label"></label>
+                <input asp-for="Adresse" class="form-control" />
+                <span asp-validation-for="Adresse" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Valider" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

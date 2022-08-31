@@ -1,0 +1,52 @@
+﻿@model MiniProjetBibliotheque.Models.Auteur
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="display-4">Créer un nouvel auteur</h1>
+
+<h4>Auteur</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label class="control-label">Nom</label>
+                <input asp-for="NomAuteur" class="form-control" />
+                <span asp-validation-for="NomAuteur" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Prénom</label>
+                <input asp-for="PrenomAuteur" class="form-control" />
+                <span asp-validation-for="PrenomAuteur" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Email</label>
+                <input asp-for="EmailAuteur" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Téléphone</label>
+                <input asp-for="TelephoneAuteur" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Grade</label>
+                <input asp-for="Grade" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Créer" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MiniProjetBibliotheque.Models.Livre>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="display-4">Liste des livres</h1>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Rechercher par Titre: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Rechercher" class="btn btn-dark" /> |
+            <a class="btn btn-outline-dark" asp-action="Index">Retour a la Liste complète</a>
+        </p>
+    </div>
+</form>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Créer un nouveau livre</a>
+</p>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong> Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*<a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Titre</a>*@
+                @*<a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Titre)</a>*@
+
+                @Html.ActionLink("Titre", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+            </th>
+            <th>
+                Nombre de pages
+            </th>
+            <th>
+                
+
+                @Html.ActionLink("Auteur", "Index", new { sortOrder = ViewBag.NameSortParm })
+               @* <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Auteur)</a>*@
+            </th>
+            <th>
+                 @Html.ActionLink("Domaine", "Index", new { sortOrder = ViewBag.NameSortParm })
+                
+               @* <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Domaine)</a>*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Auteur.NomAuteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Domaine.NomDomaine)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.LivreId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-pen"></i> Éditer</button></a> |
+                    <a asp-action="Details" asp-route-id="@item.LivreId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-info-circle"></i> Détails</button></a> |
+                    <a asp-action="Delete" asp-route-id="@item.LivreId"><button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i> Supprimer</button></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+

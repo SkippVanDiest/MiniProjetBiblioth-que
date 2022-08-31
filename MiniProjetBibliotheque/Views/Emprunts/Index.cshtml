@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MiniProjetBibliotheque.Models.Emprunt>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="display-4">Liste des emprunts</h1>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Rechercher par Titre: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Rechercher" class="btn btn-dark" /> |
+            <a class="btn btn-outline-dark" asp-action="Index">Retour a la Liste complète</a>
+        </p>
+    </div>
+</form>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Créer une nouvel emprunt</a>
+</p>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong> Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<table class="table border-dark">
+    <thead>
+        <tr>
+            <th>
+                Date d'emprunt
+            </th>
+            <th>
+                Date de retour
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lecteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateEmprunt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateRetour)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lecteur.NomLecteur) @Html.DisplayFor(modelItem => item.Lecteur.PrenomLecteur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Livre.Titre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-pen"></i> Éditer</button></a> |
+                    <a asp-action="Details" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-info-circle"></i> Détails</button></a> |
+                    <a asp-action="Delete" asp-route-id="@item.EmpruntId"><button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i> Supprimer</button></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

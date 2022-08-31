@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MiniProjetBibliotheque.Models.Domaine>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="display-4">Liste des domaines</h1>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Rechercher par Nom: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Rechercher" class="btn btn-dark" /> |
+            <a class="btn btn-outline-dark" asp-action="Index">Retour a la Liste complète</a>
+        </p>
+    </div>
+</form>
+
+<p>
+    <a class="btn btn-dark" asp-action="Create">Créer un nouveau domaine</a>
+</p>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong> Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<table class="table border-dark">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Nom</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Description)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomDomaine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-pen"></i> Éditer</button></a> |
+                    <a asp-action="Details" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-dark"><i class="bi bi-info-circle"></i> Détails</button></a> |
+                    <a asp-action="Delete" asp-route-id="@item.DomaineId"><button type="button" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i> Supprimer</button></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenue @User.Identity?.Name</h1>
+    <div class="row pt-2">
+        <div class="col border border-2 border-dark rounded-5 m-5 p-5">
+            <h2><i class="bi bi-book"></i> Réserver un livre</h2>
+            <p>Consulter notre liste de livres et empruntez en un.</p>
+            <p><a class="btn btn-outline-dark" asp-controller="Livres" asp-action="Index">Réserver</a></p>
+        </div>
+        <div class="col border border-2 border-dark rounded-5 m-5 p-5">
+            <h2><i class="bi bi-clipboard"></i> Consulter les livre empruntés</h2>
+            <p>Suivez vos emprunts en cours.</p>
+            <p><a class="btn btn-outline-dark" asp-controller="Emprunts" asp-action="Index">Consulter</a></p>
+        </div>
+    </div>
+</div>

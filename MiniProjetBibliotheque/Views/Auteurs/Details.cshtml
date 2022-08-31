@@ -1,0 +1,59 @@
+﻿@model MiniProjetBibliotheque.Models.Auteur
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="display-4">Détails Auteur</h1>
+
+<div>
+    <h4>Auteur</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nom
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            Prénom
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PrenomAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmailAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            Téléphone
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TelephoneAuteur)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+        <dt class="col-sm-2">
+            Livres écrits
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model.LivresAuteur)
+            {
+                @Html.DisplayFor(modelItem => item.Titre)
+
+                <br />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AuteurId">Éditer</a> |
+    <a asp-action="Index">Retour à la liste</a>
+</div>

@@ -1,0 +1,51 @@
+﻿@model MiniProjetBibliotheque.Models.Livre
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-4">Modifier livre</h1>
+
+<h4>Livre</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LivreId" />
+            <div class="form-group mb-3">
+                <label asp-for="Titre" class="control-label"></label>
+                <input asp-for="Titre" class="form-control" />
+                <span asp-validation-for="Titre" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Nombre de pages</label>
+                <input asp-for="NombrePages" class="form-control" />
+                <span asp-validation-for="NombrePages" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Auteur</label>
+                <select asp-for="AuteurId" class="form-control" asp-items="ViewBag.AuteurId"></select>
+                <span asp-validation-for="AuteurId" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label class="control-label">Domaine</label>
+                <select asp-for="DomaineId" class="form-control" asp-items="ViewBag.DomaineId"></select>
+                <span asp-validation-for="DomaineId" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Valider" class="btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

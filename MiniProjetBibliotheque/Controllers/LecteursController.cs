@@ -33,12 +33,12 @@ namespace MiniProjetBibliotheque.Controllers
 
             ViewData["CurrentFilter"] = searchString;
 
-            var lecteurs = from a in _context.Users
+            var users = from a in _context.Users
                           select a;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                lecteurs = lecteurs.Where(s => s.UserName.Contains(searchString));
+                users = users.Where(s => s.UserName.Contains(searchString));
             }
 
 
@@ -53,12 +53,12 @@ namespace MiniProjetBibliotheque.Controllers
                     lecteurs = lecteurs.OrderBy(s => s.PrenomLecteur);
                     break;
             }*/
-            return View(await lecteurs.ToListAsync());
+            return View(await users.ToListAsync());
         }
 
 
         // GET: Lecteurs/Details/5
-        public async Task<IActionResult> Details(string? id)
+        /*public async Task<IActionResult> Details(string? id)
         {
             if (id == null || _context.Lecteurs == null)
             {
@@ -192,6 +192,6 @@ namespace MiniProjetBibliotheque.Controllers
         private bool LecteurExists(string id)
         {
           return (_context.Lecteurs?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+        }*/
     }
 }

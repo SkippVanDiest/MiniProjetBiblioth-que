@@ -2,6 +2,7 @@
 
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Index";
@@ -19,12 +20,12 @@
     </div>
 </form>
 
-@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+@*if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
 {
     <p>
         <a class="btn btn-dark" asp-action="Create">Créer un nouveau lecteur</a>
     </p>
-}
+}*@
 
 @if (TempData["AlertMessage"] != null)
 {
@@ -51,7 +52,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                Roles
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -74,13 +80,22 @@
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @foreach (var role in await UserManager.GetRolesAsync(await UserManager.FindByIdAsync(item.Id)))
+                    {
+                        <span>@Html.DisplayFor(modelItem => role) </span>
+                    }
+                </td>
+                @*<td>
                     <a asp-action="Details" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-info-circle"></i> Détails</button></a>
                     @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-dark me-1"><i class="bi bi-pen"></i> Éditer</button></a>
                         <a asp-action="Delete" asp-route-id="@item.Id"><button type="button" class="btn btn-outline-danger me-1"><i class="bi bi-x-circle"></i> Supprimer</button></a>
                     }
-                </td>
+                </td>*@
             </tr>
         }
     </tbody>

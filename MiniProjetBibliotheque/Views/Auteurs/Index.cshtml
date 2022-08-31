@@ -37,11 +37,11 @@
     <thead>
         <tr>
             <th>
-                @*Html.DisplayNameFor(model => model.NomAuteur)*@
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Nom</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Prénom</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Prénom</a>
+                @*Html.DisplayNameFor(model => model.NomAuteur)*@
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Nom</a>
             </th>
             <th>
                 Email
@@ -60,10 +60,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NomAuteur)
+                    @Html.DisplayFor(modelItem => item.PrenomAuteur)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PrenomAuteur)
+                    @Html.DisplayFor(modelItem => item.NomAuteur)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EmailAuteur)

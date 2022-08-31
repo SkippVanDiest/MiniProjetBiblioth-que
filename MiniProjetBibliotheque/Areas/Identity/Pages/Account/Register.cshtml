@@ -6,7 +6,8 @@
 
 <h1>@ViewData["Title"]</h1>
 
-    <div class="w-500 text-center">
+<div class="row justify-content-md-center">
+    <div class ="text-center col col-md-6">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Créer un nouveau compte.</h2>
             <hr />
@@ -29,6 +30,7 @@
         <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-dark mb-3">S'inscrire</button>
         </form>
     </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

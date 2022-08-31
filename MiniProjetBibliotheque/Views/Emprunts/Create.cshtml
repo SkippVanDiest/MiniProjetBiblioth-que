@@ -14,18 +14,18 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" value="@User.Identity?.Name" />
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <select asp-for="LivreId" class="form-select" placeholder="Titre du livre" asp-items="ViewBag.LivreId"></select>
                 <label class="control-label">Titre du livre</label>
-                <select asp-for="LivreId" class="form-control" asp-items="ViewBag.LivreId"></select>
             </div>
-            <div class="form-group mb-3">
-                <label class="control-label">Date d'emprunt'</label>
-                <input asp-for="DateEmprunt" class="form-control" />
+            <div class="form-floating mb-3">
+                <input asp-for="DateEmprunt" class="form-control" placeholder="Date d'emprunt" aria-required="true" />
+                <label class="control-label">Date d'emprunt</label>
                 <span asp-validation-for="DateEmprunt" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="DateRetour" class="form-control" placeholder="Date de retour" aria-required="true" />
                 <label class="control-label">Date de retour</label>
-                <input asp-for="DateRetour" class="form-control" />
                 <span asp-validation-for="DateRetour" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">

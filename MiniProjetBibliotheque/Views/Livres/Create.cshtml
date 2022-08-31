@@ -12,23 +12,23 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="Titre" class="form-control" placeholder="Titre" aria-required="true" />
                 <label asp-for="Titre" class="control-label"></label>
-                <input asp-for="Titre" class="form-control" />
                 <span asp-validation-for="Titre" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="NombrePages" class="form-control" placeholder="Nombre de pages" aria-required="true" />
                 <label class="control-label">Nombre de pages</label>
-                <input asp-for="NombrePages" class="form-control" />
                 <span asp-validation-for="NombrePages" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <select asp-for="AuteurId" class="form-select" asp-items="ViewBag.AuteurId"></select>
                 <label class="control-label">Auteur</label>
-                <select asp-for="AuteurId" class="form-control" asp-items="ViewBag.AuteurId"></select>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <select asp-for="DomaineId" class="form-select" asp-items="ViewBag.DomaineId"></select>
                 <label class="control-label">Domaine</label>
-                <select asp-for="DomaineId" class="form-control" asp-items="ViewBag.DomaineId"></select>
             </div>
             <div class="form-group mb-3">
                 <input type="submit" value="Créer" class="btn btn-dark" />

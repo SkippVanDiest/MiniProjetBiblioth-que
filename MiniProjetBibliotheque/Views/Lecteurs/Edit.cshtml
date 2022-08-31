@@ -13,33 +13,33 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group mb-3">
+            <div class="form-floatingmb-3">
+                <input asp-for="NomLecteur" class="form-control" placeholder="Nom" aria-required="true" />
                 <label class="control-label">Nom</label>
-                <input asp-for="NomLecteur" class="form-control" />
                 <span asp-validation-for="NomLecteur" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="PrenomLecteur" class="form-control" placeholder="Prénom" aria-required="true" />
                 <label class="control-label">Prénom</label>
-                <input asp-for="PrenomLecteur" class="form-control" />
                 <span asp-validation-for="PrenomLecteur" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="Email" class="form-control" placeholder="Email" aria-required="true" />
                 <label class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Téléphone" aria-required="true" />
                 <label class="control-label">Téléphone</label>
-                <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="Adresse" class="form-control" placeholder="Adresse" aria-required="true" />
                 <label asp-for="Adresse" class="control-label"></label>
-                <input asp-for="Adresse" class="form-control" />
                 <span asp-validation-for="Adresse" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <input type="submit" value="Valider" class="btn btn-dark" />
+                <input type="submit" value="Créer" class="btn btn-dark" />
             </div>
         </form>
     </div>

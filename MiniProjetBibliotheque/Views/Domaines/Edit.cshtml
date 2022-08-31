@@ -13,17 +13,17 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DomaineId" />
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="NomDomaine" class="form-control" placeholder="Nom" aria-required="true" />
                 <label class="control-label">Nom</label>
-                <input asp-for="NomDomaine" class="form-control" />
                 <span asp-validation-for="NomDomaine" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <textarea asp-for="Description" class="form-control" placeholder="Description" style="height: 100px"></textarea>
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
             </div>
             <div class="form-group mb-3">
-                <input type="submit" value="Valider" class="btn btn-dark" />
+                <input type="submit" value="Créer" class="btn btn-dark" />
             </div>
         </form>
     </div>

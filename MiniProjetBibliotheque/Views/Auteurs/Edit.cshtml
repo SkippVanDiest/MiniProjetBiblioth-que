@@ -13,27 +13,27 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AuteurId" />
-            <div class="form-group mb-3">
-                <label class="control-label">Nom</label>
-                <input asp-for="NomAuteur" class="form-control" />
-                <span asp-validation-for="NomAuteur" class="text-danger"></span>
-            </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="PrenomAuteur" class="form-control" placeholder="Prénom" aria-required="true" />
                 <label class="control-label">Prénom</label>
-                <input asp-for="PrenomAuteur" class="form-control" />
                 <span asp-validation-for="PrenomAuteur" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="NomAuteur" class="form-control" placeholder="Nom" aria-required="true" />
+                <label class="control-label">Nom</label>
+                <span asp-validation-for="NomAuteur" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="EmailAuteur" class="form-control" placeholder="Email" />
                 <label class="control-label">Email</label>
-                <input asp-for="EmailAuteur" class="form-control" />
             </div>
-            <div class="form-group mb-3">
+            <div class="form-floating mb-3">
+                <input asp-for="TelephoneAuteur" class="form-control" placeholder="Téléphone" />
                 <label class="control-label">Téléphone</label>
-                <input asp-for="TelephoneAuteur" class="form-control" />
             </div>
-            <div class="form-group mb-3">
-                <label asp-for="Grade" class="control-label"></label>
-                <input asp-for="Grade" class="form-control" />
+            <div class="form-floating mb-3">
+                <input asp-for="Grade" class="form-control" placeholder="Grade" />
+                <label class="control-label">Grade</label>
             </div>
             <div class="form-group mb-3">
                 <input type="submit" value="Valider" class="btn btn-dark" />
